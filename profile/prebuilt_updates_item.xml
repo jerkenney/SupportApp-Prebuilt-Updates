@@ -1,0 +1,31 @@
+<!--
+  Support App extension item: Addigy Prebuilt App Updates
+
+  Merge this <dict> into the Items array of a Row in your existing Support App
+  configuration profile (nl.root3.support payload). Do NOT push it as a separate
+  profile - two profiles managing the same preference domain will conflict.
+
+  The OnAppearAction path must match where the worker is installed:
+  /Library/Management/Scripts/prebuilt_updates.zsh
+
+  The displayed value ("🟠 N updates available" / "✅ Up to date") is written to
+  the nl.root3.support "prebuilt_updates" key by the worker. When updates are
+  pending the item becomes clickable and opens MacManage.
+
+  REQUIRED: your profile must also set StatusBarIconNotifierEnabled = true for
+  the menu bar badge to appear.
+-->
+<dict>
+    <key>Type</key>
+    <string>Extension</string>
+    <key>ExtensionID</key>
+    <string>prebuilt_updates</string>
+    <key>Title</key>
+    <string>App Updates</string>
+    <key>Subtitle</key>
+    <string>Managed apps kept up to date</string>
+    <key>Symbol</key>
+    <string>arrow.down.app.fill</string>
+    <key>OnAppearAction</key>
+    <string>/Library/Management/Scripts/prebuilt_updates.zsh</string>
+</dict>

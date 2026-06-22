@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+	  Proactive refresh for the Support App "App Updates" extension.
+	  Runs the worker as root so the menu bar notification badge lights up on its
+	  own when prebuilt-app updates land, without the user opening the app first.
+
+	  Triggers:
+	    RunAtLoad     - run once when the daemon is (re)loaded
+	    WatchPaths    - run the instant Addigy rewrites its prebuilt-app state
+	    StartInterval - safety net every 30 min in case a WatchPaths event is missed
+
+	  CUSTOMIZE: rename the Label to your org's reverse-DNS (and rename this file
+	  to match). Install at /Library/LaunchDaemons/, owner root:wheel, mode 644.
+	-->
+	<key>Label</key>
+	<string>com.example.prebuilt-updates</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Library/Management/Scripts/prebuilt_updates.zsh</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StartInterval</key>
+	<integer>1800</integer>
+	<key>WatchPaths</key>
+	<array>
+		<string>/Library/Addigy/ansible/prebuilt-apps/state.updated</string>
+		<string>/Library/Addigy/ansible/prebuilt-apps/state.db</string>
+	</array>
+	<key>StandardErrorPath</key>
+	<string>/var/log/prebuilt_updates.log</string>
+	<key>StandardOutPath</key>
+	<string>/var/log/prebuilt_updates.log</string>
+</dict>
+</plist>

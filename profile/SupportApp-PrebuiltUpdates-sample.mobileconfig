@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  MINIMAL SAMPLE Root3 Support App profile showing only the "App Updates"
+  extension row plus the StatusBarIconNotifierEnabled key the badge needs.
+
+  This is a starting point, not a finished profile. If you already manage a
+  Support App profile, do NOT install this alongside it - instead copy the
+  Extension <dict> (see profile/prebuilt_updates_item.xml) into your existing
+  profile's Rows. Generate fresh PayloadUUID values before deploying.
+-->
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadType</key>
+			<string>nl.root3.support</string>
+			<key>PayloadIdentifier</key>
+			<string>nl.root3.support.REPLACE-WITH-YOUR-UUID</string>
+			<key>PayloadUUID</key>
+			<string>REPLACE-WITH-YOUR-UUID</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>PayloadDisplayName</key>
+			<string>Support App - App Updates (sample)</string>
+			<key>Title</key>
+			<string>IT Support</string>
+			<key>StatusBarIconNotifierEnabled</key>
+			<true/>
+			<key>Rows</key>
+			<array>
+				<dict>
+					<key>Items</key>
+					<array>
+						<dict>
+							<key>Type</key>
+							<string>Extension</string>
+							<key>ExtensionID</key>
+							<string>prebuilt_updates</string>
+							<key>Title</key>
+							<string>App Updates</string>
+							<key>Subtitle</key>
+							<string>Managed apps kept up to date</string>
+							<key>Symbol</key>
+							<string>arrow.down.app.fill</string>
+							<key>OnAppearAction</key>
+							<string>/Library/Management/Scripts/prebuilt_updates.zsh</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadIdentifier</key>
+	<string>com.example.supportapp.appupdates.sample</string>
+	<key>PayloadUUID</key>
+	<string>REPLACE-WITH-YOUR-PROFILE-UUID</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+	<key>PayloadDisplayName</key>
+	<string>Support App - App Updates (sample)</string>
+	<key>PayloadScope</key>
+	<string>System</string>
+</dict>
+</plist>
